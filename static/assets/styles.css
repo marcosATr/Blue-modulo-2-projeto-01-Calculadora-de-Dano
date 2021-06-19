@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Press+Start+2P&display=swap');
+/* Redefinir */
+
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    background-color: var(--mainBgColor);
+
+}
+/* Variables */
+:root {
+    --mainBgColor: #34495e;
+    --secBgColor: #F4E3CB;
+    --titleFont: 'Press Start 2P', cursive;
+    --textFont: 'Oswald', sans-serif;
+
+    
+}
+
+section {
+    padding: 1rem;
+    max-width: 1496px;
+    margin-inline: auto;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sectionOne {
+    color: var(--secBgColor);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.arrow {
+    max-width: 64px;
+    max-height: 64px;
+}
+.arrow svg {
+    color: var(--secBgColor);
+    fill: currentColor;
+}
+.arrow svg:first-child {
+    margin-bottom: -25px;
+}
+
+/* ANIMATION */
+.arrow svg:last-child {
+    animation: pushArrow 0.5s both;
+    animation-iteration-count: 1;
+}
+@keyframes pushArrow {
+    0% {
+        transform: translateY(-45px);
+        animation-timing-function: ease-in;
+    }
+    25% {
+        transform: translateY(-25px);
+        animation-timing-function: ease-out;
+    }
+    50% {
+        transform: translateY(-15px);
+        animation-timing-function: ease-in;
+    }
+    100% {
+        transform: translateY(0px);
+        animation-timing-function: ease-out;
+    }
+}
+.displayNone {
+    display: none;
+}
+.displayShow{
+    display: block;
+}
+
+.hide {
+    animation: hide 0.3s ease-out;
+    animation-iteration-count: 1;
+}
+@keyframes hide {
+    0% {
+        opacity: 1;
+        height: 60px;
+        overflow: clip;
+    }
+    /* 85% {
+        opacity: 0;
+        height: 0;
+    } */
+    100% {
+        opacity: 0;
+        height: 0;
+        overflow: clip;
+    }
+}
+.show {
+    animation: show 0.4s ease-in;
+}
+@keyframes show {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.console {
+    color: var(--secBgColor);
+    font-family: var(--titleFont);
+    margin: 20px;
+    padding: 20px;
+}
+
+.mainCharWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-inline: auto; 
+}
+.title {
+    font-family: var(--titleFont);
+    font-size: 2rem;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+}
+.tac {
+    text-align: center;
+}
+.text {
+    margin: 1rem 0;
+    font-size: 2em;
+    font-family: var(--textFont);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+.character {
+    background-color: var(--secBgColor);
+    /* background-image: url(../img/mask.jpg); */
+    /* background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay; */
+    padding: 1px;
+    z-index: 5;
+    position: relative;
+    min-width: 276px;
+    margin: 6px 0;
+}
+.darth {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.fighter {
+    display: flex;
+}
+#listOfChars > .character {
+    cursor: pointer;
+    min-width: 450px;
+}
+/* .photo {
+    border-width: 5px;
+    border-color: var(--secBgColor);
+    border-style: solid;
+} */
+.photo img {
+    max-height: 220px;
+    padding: 25px 25px;
+    width: auto;
+}
+.charInfo {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: var(--textFont);
+    color: var(--mainBgColor);
+    margin: 0 5px;
+}
+.tag {
+    color: var(--secBgColor);
+    background-color: var(--mainBgColor);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: var(--textFont);
+    padding: 3px 5px;
+    margin: 0 5px 0 0;
+    font-weight: bold;
+}
+.charPill {
+    color: var(--mainBgColor);
+    background-color: var(--secBgColor);
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: var(--textFont);
+    padding: 3px 5px;
+    margin: 0 5px 0 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+.charTraits {
+    margin: 5px 0
+}
+.margingDark {
+    margin: 10px;
+    border: var(--mainBgColor) 5px solid;
+    padding: 15px;
+}
+.name {
+    font-family: var(--titleFont);
+    color: var(--mainBgColor);
+}
+.name .tac {
+    margin: 1px;
+}
+.inventory {
+    margin: 20px;
+    padding: 20px;    
+}
+
+
+
+.insideBag {
+    border: solid 5px var(--secBgColor);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.insideBag img {
+    width: 48px;
+    padding: 3px;
+    margin-right: 10px;
+    max-height: 34px;
+}
+.insideBag .gameText {
+    float: left;
+}
+.item {
+    display: flex;
+    border-bottom: 3px dashed var(--secBgColor);
+    padding: 2px 0;
+    width: 100%;
+}
+.item:last-of-type {
+    border-bottom: none;
+}
+.gameText{
+    font-family: var(--titleFont);
+    color: var(--secBgColor);
+    font-size: 14px;
+}
+.inventory > p {
+    font-size: 16px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;    
+}
+.grid>div:nth-child(2){
+    flex-basis: 0;
+}
+.charholder {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.mainInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+.attributes {
+    margin-left: 15px;
+}
+.attributes span {
+    height: 22px;
+    width: 10px;
+    display: block;
+    background-color: var(--mainBgColor);
+    margin-top: -1px;
+}
+.attributes> p:nth-child(1) >span {
+    width: 0;
+}
+.attributes> p:nth-child(2) >span {
+    width: 0;
+}
+.attributes> p:nth-child(3) >span {
+    width: 0;
+}
+
+.grievous img, .ashoka img, .boba img { 
+    padding: 5px 25px;
+    max-width: 180px;
+}
+.shorter {
+    max-width: 75%;
+    margin: 0 auto;
+}
+
+
+
+
+.attributes span {
+    transition: all 0.9s ease-out;
+}
+.inventory .item {
+    cursor: pointer;
+}
+
+

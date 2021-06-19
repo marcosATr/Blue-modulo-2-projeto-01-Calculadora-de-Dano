@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Danos</title>
+    <link rel="stylesheet" href="static/assets/styles.css">
+</head>
+
+<body>
+    <section class="sectionOne">
+        <!--description-->
+        <div class="tac shorter">
+            <p class="title">Calculadora de Danos</p>
+            <p class="text">Você é o temido Darth Vader! É hora de dominar o universo! Derrote os inimigos para construir sua Estrela da Morte.</p>
+        </div>
+        <div class="arrow">
+            <a href="#sectionTwo">
+                <svg x="0px" y="0px" viewBox="0 0 960 560" enable-background="new 0 0 960 560" xml:space="preserve">
+                <g id="Rounded_Rectangle_33_copy_4_1_"><path d="M480,344.181L268.869,131.889c-15.756-15.859-41.3-15.859-57.054,0c-15.754,15.857-15.754,41.57,0,57.431l237.632,238.937 c8.395,8.451,19.562,12.254,30.553,11.698c10.993,0.556,22.159-3.247,30.555-11.698l237.631-238.937c15.756-15.86,15.756-41.571,0-57.431s-41.299-15.859-57.051,0L480,344.181z" /></g></svg>
+                <svg class='pushArrow' x="0px" y="0px" viewBox="0 0 960 560" enable-background="new 0 0 960 560" xml:space="preserve">
+                    <g id="Rounded_Rectangle_33_copy_4_1_"><path d="M480,344.181L268.869,131.889c-15.756-15.859-41.3-15.859-57.054,0c-15.754,15.857-15.754,41.57,0,57.431l237.632,238.937 c8.395,8.451,19.562,12.254,30.553,11.698c10.993,0.556,22.159-3.247,30.555-11.698l237.631-238.937c15.756-15.86,15.756-41.571,0-57.431s-41.299-15.859-57.051,0L480,344.181z" /></g></svg>
+            </a>
+        </div>
+    </section>
+    
+    <section id='sectionTwo'>
+        <div class="grid">
+            <div><!-- row 1 -->
+                <div class="character">
+                    <div class="margingDark">
+                        <div class="darth" data-vida='{{darth.vida}}' data-ataque='{{darth.ataque}}' data-def='{{darth.def}}'>
+                            <div class="photo">
+                                <img src="static/img/darth.png" alt="Darth Vader">
+                            </div>
+                            <div class="charInfo">
+                                <p class="name tac">Darth Vader</p>
+                                <div class="mainInfo">
+                                    <div>
+                                        <p>Ataque</p>
+                                        <p>Defesa</p>
+                                        <p>Vida</p>
+                                    </div>
+                                    <div class="attributes">
+                                        <p><span></span></p>
+                                        <p><span></span></p>
+                                        <p><span id='darthVida'></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="charTraits"><span class="tag">Violento</span> <span class="tag">Cruel</span> <span
+                                    class="tag">Poderoso</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div><!-- row 2 -->
+                <div class="inventory">
+                    <p class="tac gameText">Ataques</p>
+                    <div class="insideBag">
+                        <div class="item" data-name='lightsaber' data-power='{{weapons.lightsaber}}'>
+                            <img src="static/img/lightsaber.png" alt="Lightsaber">
+                            <p class="gameText">LightSaber</p>
+                        </div>
+                        <div class='item' data-name='force' data-power='{{weapons.force}}'>
+                            <img src="static/img/wind2.png" alt="Foce">
+                            <p class="gameText">Força</p>
+                        </div>
+                        <div class='item' data-name='pistol' data-power='{{weapons.pistol}}'>
+                            <img src="static/img/pistol.png" alt="Pistola Laser">
+                            <p class="gameText">Pistola Laser</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="console">
+                    <div class="insideBag">
+                        <p>Escolha o seu oponente.</p>
+                    </div>
+                </div>
+            </div>
+            <div id='listOfChars'><!-- row 3 -->
+                <div class="character grievous" data-vida='{{grievous.vida}}' data-ataque='{{grievous.ataque}}' data-def='{{grievous.def}}'>
+                    <div class="margingDark">
+                        <div class="fighter">
+                            <div class="photo">
+                                <img src="static/img/grievous.png" alt="Sir Grievous">
+                            </div>
+                            <div class="charHolder">
+                                <p class="name tac">Grievous</p>
+                                <div class="charInfo">
+                                    <div class="mainInfo">
+                                        <div>
+                                            <p>Ataque</p>
+                                            <p>Defesa</p>
+                                            <p>Vida</p>
+                                        </div>
+                                        <div class="attributes">
+                                            <p><span></span></p>
+                                            <p><span></span></p>
+                                            <p><span></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="charTraits">
+                                    <span class="tag">Poderoso</span>
+                                    <span class="tag">Atrapalhado</span>
+                                    <span class="tag">Lento</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="character ashoka" data-vida='{{ashoka.vida}}' data-ataque='{{ashoka.ataque}}' data-def='{{ashoka.def}}'>
+                    <div class="margingDark row">
+                        <div class="fighter">
+                            <div class="photo">
+                                <img src="static/img/ashoka.png" alt="Jedi Master">
+                            </div>
+                            <div class="charHolder">
+                                <p class="name tac">Jedi Master</p>
+                                <div class="charInfo">
+                                    <div class="mainInfo">
+                                        <div>
+                                            <p>Ataque</p>
+                                            <p>Defesa</p>
+                                            <p>Vida</p>
+                                        </div>
+                                        <div class="attributes">
+                                            <p><span></span></p>
+                                            <p><span></span></p>
+                                            <p><span></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="charTraits">
+                                    <span class="tag">Veloz</span>
+                                    <span class="tag">DPS</span>
+                                    <span class="tag">Piedosa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="character boba" data-vida='{{boba.vida}}' data-ataque='{{boba.ataque}}' data-def='{{boba.def}}'>
+                    <div class="margingDark row">
+                        <div class="fighter">
+                            <div class="photo">
+                                <img src="static/img/boba.png" alt="Boba Fett">
+                            </div>
+                            <div class="charHolder">
+                                <p class="name tac">Boba Fett</p>
+                                <div class="charInfo">
+                                    <div class="mainInfo">
+                                        <div>
+                                            <p>Ataque</p>
+                                            <p>Defesa</p>
+                                            <p>Vida</p>
+                                        </div>
+                                        <div class="attributes">
+                                            <p><span></span></p>
+                                            <p><span></span></p>
+                                            <p><span></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="charTraits">
+                                    <span class="tag">Forte</span>
+                                    <span class="tag">DPS</span>
+                                    <span class="tag">Tech-Mage</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="static/assets/index.js"></script>
+</body>
+</html>
