@@ -150,12 +150,19 @@ section {
     font-weight: 400;
     letter-spacing: 1px;
 }
+.text-smaller {
+    flex-wrap: wrap;
+}
+.text-smaller > div {
+    margin: 2rem 1rem;
+    padding: 1rem;
+    font-size: 1.5em;
+    font-family: var(--textFont);
+    text-align: center;
+    width: 300px;
+}
 .character {
     background-color: var(--secBgColor);
-    /* background-image: url(../img/mask.jpg); */
-    /* background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: overlay; */
     padding: 1px;
     z-index: 5;
     position: relative;
@@ -176,11 +183,7 @@ section {
     cursor: pointer;
     min-width: 450px;
 }
-/* .photo {
-    border-width: 5px;
-    border-color: var(--secBgColor);
-    border-style: solid;
-} */
+
 .photo img {
     max-height: 220px;
     padding: 25px 25px;
@@ -234,9 +237,6 @@ section {
     margin: 20px;
     padding: 20px;    
 }
-
-
-
 .insideBag {
     border: solid 5px var(--secBgColor);
     padding: 20px;
@@ -290,8 +290,6 @@ section {
     display: flex;
     flex-direction: column;
 }
-
-
 .mainInfo {
     display: flex;
     flex-direction: row;
@@ -325,10 +323,6 @@ section {
     max-width: 75%;
     margin: 0 auto;
 }
-
-
-
-
 .attributes span {
     transition: all 0.9s ease-out;
 }

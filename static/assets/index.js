@@ -12,7 +12,7 @@ for (let char of characters){
             char.classList.add('hide')
             setTimeout(function(){ 
                 char.classList.add('displayNone')
-                }, 295);
+                }, 295); 
         };
         char.classList.add('displayShow');
         this.setAttribute('data', 'active');
