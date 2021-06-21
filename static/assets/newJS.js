@@ -1,10 +1,12 @@
-function Character(atk, def, life, atkbar, defBar, lifeBar) {
-    this.atk = atk;
-    this.def = def;
-    this.life = life;
+//CONSTRUCTOR
+function Character(atk, def, life, atkbar, defBar, lifeBar, HTMLPosition) {
+    this.atk = atk
+    this.def = def
+    this.life = life
     this.atkbar = atkbar
     this.lifeBar = lifeBar
     this.defBar = defBar
+    this.HTMLPosition = HTMLPosition
     this.updateLife = function(damageTaken){
         this.life -= damageTaken
         this.lifeBar.style.width = `${this.life}px`
@@ -16,7 +18,10 @@ function Character(atk, def, life, atkbar, defBar, lifeBar) {
         this.defBar.style.width = `${this.def}px`
     }
 }
+// CONSOLE
+const consoleText = document.querySelector('.console > .insideBag')
 
+// CHECK FOR CHARACTHERS AND CREATE NEW OBJECTS, ADD THEM TO A LIST.
 let charsList = []
 const allChars = Array.from(document.querySelectorAll('.character'))
 for (let i of allChars) {
@@ -26,39 +31,110 @@ for (let i of allChars) {
     let barraDeAtaque = i.querySelector('.attributes > p:nth-child(1) > span')
     let barraDeDefesa = i.querySelector('.attributes > p:nth-child(2) > span')
     let barraDeVida = i.querySelector('.attributes > p:nth-child(3) > span')
-    let newChar = new Character(ataque, defesa, vida, barraDeAtaque,barraDeDefesa, barraDeVida)
+    var posicao = allChars[allChars.indexOf(i)]
+    let newChar = new Character(ataque, defesa, vida, barraDeAtaque,barraDeDefesa, barraDeVida, posicao)
     charsList.push(newChar)
 }
 
 // INITIALIZE CHARS FROM LIST OS CHARS:
-const darth = charsList[0]
-const grievous = charsList[1]
-const ashoka = charsList[2]
-const boba = charsList[3]
-const enemies = document.querySelectorAll('#listOfChars > .character')
+const darth = charsList[0] 
+const grievous = charsList[1] // unecessary, saved for future use
+const ashoka = charsList[2] // unecessary, saved for future use
+const boba = charsList[3] // unecessary, saved for future use
+const enemies = document.querySelectorAll('#listOfChars > .character') //delete if not used
 const groupOfChars = [darth, grievous, ashoka, boba]
-//FIGHT!
-for (const enemy of enemies){
-    enemy.addEventListener('click', function(){
-        //TRIGGER BAR ANIMATIONS
+const groupOfEnemies = [grievous, ashoka, boba] //delete if not used
+
+const instancedEnemy = []
+
+for (const enemy of groupOfEnemies){
+    enemy.HTMLPosition.addEventListener('click', function(){
+        let selectedEnemy = new Character(enemy.atk, enemy.def, enemy.life, enemy.atkbar, enemy.defBar, enemy.lifeBar, enemy.HTMLPosition)
+        instancedEnemy.push(selectedEnemy)
+
+        //TRIGGER ANIMATIONS
         for(i of groupOfChars){
             i.updateAtaque()
             i.updateDefesa()
             i.updateLife(0)
         }
-        //TRIGGER SELECTION ANIMATION
-        for (let enemy of enemies){
-            enemy.classList.add('hide')
+        for (let j of groupOfEnemies){
+            j.HTMLPosition.classList.add('hide')
             setTimeout(function(){ 
-                enemy.classList.add('displayNone')
-                }, 295)
+                j.HTMLPosition.classList.add('displayNone')
+            }, 295)
         }
-        enemy.classList.add('displayShow')
+        this.classList.add('displayShow')
         this.setAttribute('data', 'active')
+        consoleText.innerHTML = 'Agora escolha a habilidade!'
     })
 }
-const weapons = {
-    lightSaber: function(){
-        var causedDamage
+
+
+//WEAPONS CONSTRUCTION
+let weaponsList = []
+function WeaponsConstructor(name, weapAtkPower, weapHTML){
+    this.name = name
+    this.weapAtkPower = weapAtkPower
+    this.weapHTML = weapHTML
+    this.causeDamage = function(){
+        let dmg = this.calculateDamage()
+        instancedEnemy[0].life -= dmg
+        instancedEnemy[0].lifeBar.style.width = instancedEnemy[0].life+'px'
+        consoleText.innerHTML = `Você causou ${dmg} de dano!`
     }
+}
+const weapons = Array.from(document.querySelectorAll('.inventory .item'))
+for (let k of weapons){
+    let nome = k.getAttribute('data-name')
+    let poder = k.getAttribute('data-power')
+    let posicaoArma = weapons[weapons.indexOf(k)]
+    let weaponObj = new WeaponsConstructor(nome, poder, posicaoArma)
+    weaponsList.push(weaponObj)
+}
+
+
+//WEAPONS INITIALIZED
+const lightsaber = weaponsList[0]
+const force = weaponsList[1]
+const pistol = weaponsList[2]
+const groupOfWeapons = [lightsaber, force, pistol]
+
+
+
+//SPECIFIC TYPES OF DAMAGES TO WEAPONS
+lightsaber.calculateDamage = function(){    
+    return (darth.atk * this.weapAtkPower * 0.1)  - instancedEnemy[0].def*0.2 + (Math.floor(Math.random() * 6))   
+}
+force.calculateDamage = function(){
+    return (darth.atk * this.weapAtkPower * 0.1) + (Math.floor(Math.random() * 14)) 
+}
+pistol.calculateDamage = function(){
+    return ((darth.atk * this.weapAtkPower * 0.1) - instancedEnemy[0].def*0.1 + (Math.floor(Math.random() * 7))) * (Math.floor(Math.random() * 6))
+}
+function sufferDamage(){
+    let damageTaken = (instancedEnemy[0].atk * 0.1) + (Math.floor(Math.random() * 13))
+    darth.life -= damageTaken
+    darth.HTMLPosition.setAttribute('data-vida', `${darth.life}`)
+    if (darth.life <= 0){
+        darth.lifeBar.style.width = '0px'
+        consoleText.innerHTML = `Você Perdeu!`
+    } else {
+        darth.lifeBar.style.width = darth.life+'px'
+    }
+}
+
+//REAL FIGHT
+for(let weapon of groupOfWeapons){
+    weapon.weapHTML.addEventListener('click', function(){
+        sufferDamage()
+        weapon.causeDamage()
+        if (instancedEnemy[0].life <= 0) {
+            consoleText.innerHTML = 'Você venceu!'
+            instancedEnemy[0].lifeBar.style.width = '0px'
+            this.removeEventListener("click", function(){})
+        } else {
+            instancedEnemy[0].HTMLPosition.setAttribute('data-vida', `${instancedEnemy[0].life}`)
+        }
+    })
 }
