@@ -29,12 +29,13 @@ section {
   justify-content: center;
 }
 .sectionOne {
-  color: var(--secBgColor);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    color: var(--secBgColor);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }
 .arrow {
   max-width: 64px;

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Danos</title>
-    <link rel="stylesheet" href="static/assets/styles.css">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora de Danos</title>
+        <link rel="stylesheet" href="static/assets/styles.css">
+        <script src="static/assets/newJS.js" defer></script>
 </head>
 
 <body>
@@ -40,9 +41,9 @@
     <section id='sectionTwo'>
         <div class="grid">
             <div><!-- row 1 -->
-                <div class="character">
+                <div class="character" data-vida='{{darth.vida}}' data-ataque='{{darth.ataque}}' data-def='{{darth.def}}'>
                     <div class="margingDark">
-                        <div class="darth" data-vida='{{darth.vida}}' data-ataque='{{darth.ataque}}' data-def='{{darth.def}}'>
+                        <div class="darth">
                             <div class="photo">
                                 <img src="static/img/darth.png" alt="Darth Vader">
                             </div>
@@ -189,6 +190,5 @@
             </div>
         </div>
     </section>
-    <script type="text/javascript" src="static/assets/index.js"></script>
 </body>
 </html>
