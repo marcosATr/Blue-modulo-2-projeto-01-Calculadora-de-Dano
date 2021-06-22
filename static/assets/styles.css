@@ -329,3 +329,12 @@ section {
 .inventory .item {
   cursor: pointer;
 }
+@media only screen and (max-width: 510px) {
+  #listOfChars > .character {
+    min-width: none;
+    max-width: 100%;
+  }
+  .fighter {
+    flex-direction: column;
+  }
+}
