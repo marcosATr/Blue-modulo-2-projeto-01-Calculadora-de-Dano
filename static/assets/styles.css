@@ -331,7 +331,7 @@ section {
 }
 @media only screen and (max-width: 510px) {
   #listOfChars > .character {
-    min-width: none;
+    min-width: unset;
     max-width: 100%;
   }
   .fighter {
